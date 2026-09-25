@@ -1,46 +1,41 @@
 fun task6() {
-    val array = intArrayOf(3, -2, 5, 1, -4, 7, 0)
-    println("Массив: ${array.joinToString()}")
+    val numbers = intArrayOf(2, 5, 3, 8, 1, 4)
+    println("Array: ${numbers.joinToString()}")
 
-    // 1. Цикл for
-    var productFor = 1
-    var minFor = array[0]
-    var maxFor = array[0]
-    for (element in array) {
+    var productFor = 1L
+    var minFor = numbers[0]
+    var maxFor = numbers[0]
+    for (element in numbers) {
         productFor *= element
         if (element < minFor) minFor = element
         if (element > maxFor) maxFor = element
     }
-    println("for:      произведение=$productFor, min=$minFor, max=$maxFor")
+    println("for: product=$productFor, min=$minFor, max=$maxFor")
 
-    // 2. Цикл while
-    var productWhile = 1
-    var minWhile = array[0]
-    var maxWhile = array[0]
-    var i = 0
-    while (i < array.size) {
-        productWhile *= array[i]
-        if (array[i] < minWhile) minWhile = array[i]
-        if (array[i] > maxWhile) maxWhile = array[i]
-        i++
+    var productWhile = 1L
+    var minWhile = numbers[0]
+    var maxWhile = numbers[0]
+    var index = 0
+    while (index < numbers.size) {
+        productWhile *= numbers[index]
+        if (numbers[index] < minWhile) minWhile = numbers[index]
+        if (numbers[index] > maxWhile) maxWhile = numbers[index]
+        ++index
     }
-    println("while:    произведение=$productWhile, min=$minWhile, max=$maxWhile")
+    println("while: product=$productWhile, min=$minWhile, max=$maxWhile")
 
-    // 3. forEach
-    var productForEach = 1
-    var minForEach = array[0]
-    var maxForEach = array[0]
-    array.forEach { element ->
-        productForEach *= element
-        if (element < minForEach) minForEach = element
-        if (element > maxForEach) maxForEach = element
+    var productEach = 1L
+    var minEach = Int.MAX_VALUE
+    var maxEach = Int.MIN_VALUE
+    numbers.forEach { element ->
+        productEach *= element
+        if (element < minEach) minEach = element
+        if (element > maxEach) maxEach = element
     }
-    println("forEach:  произведение=$productForEach, min=$minForEach, max=$maxForEach")
+    println("forEach:  product=$productEach, min=$minEach, max=$maxEach")
 
-    // 4. reduce()
-    val productReduce = array.reduce { acc, element -> acc * element }
-    println("reduce(): произведение=$productReduce")
+    val productReduce = numbers.reduce { accumulator, element -> accumulator * element }
+    println("reduce(): product=$productReduce")
 
-    // 5. min() и max()
-    println("min()/max(): min=${array.min()}, max=${array.max()}")
+    println("min()/max(): min=${numbers.min()}, max=${numbers.max()}")
 }

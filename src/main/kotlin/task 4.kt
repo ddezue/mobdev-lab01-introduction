@@ -1,30 +1,35 @@
-import kotlin.math.sqrt
-
-private fun isPrime(n: Int): Boolean {
-    if (n < 2) return false
-    for (i in 2..sqrt(n.toDouble()).toInt()) {
-        if (n % i == 0) return false
+private fun isPrime(number: Int): Boolean {
+    if (number < 2) return false
+    var divisor = 2
+    while (divisor * divisor <= number) {
+        if (number % divisor == 0) return false
+        ++divisor
     }
     return true
 }
 
 fun task4() {
-    println("Введите количество простых чисел n:")
-    val n = readln().toInt()
+    println("Enter the amount of prime numbers n:")
+    val amount = readln().toIntOrNull() ?: return
+
+    if (amount < 1) {
+        println("n must be >= 1")
+        return
+    }
 
     var count = 0
     var candidate = 2
-
-    while (count < n) {
+    while (count < amount) {
         if (isPrime(candidate)) {
-            count++
+            ++count
             val suffix = when {
-                count % 10 == 1 && count % 100 != 11 -> "ое"
-                count % 10 in 2..4 && (count % 100 !in 12..14) -> "е"
-                else -> "ое"
+                count % 10 == 1 && count % 100 != 11 -> "st"
+                count % 10 == 2 && count % 100 != 12 -> "nd"
+                count % 10 == 3 && count % 100 != 13 -> "rd"
+                else -> "th"
             }
-            println("$count-$suffix число: $candidate")
+            println("$count-$suffix number: $candidate")
         }
-        candidate++
+        ++candidate
     }
 }

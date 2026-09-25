@@ -1,10 +1,10 @@
 import kotlin.math.sqrt
 
-private fun sqr(n: Double): Double = n * n
+fun sqr(number: Double): Double = number * number
 
-private fun discriminant(a: Double, b: Double, c: Double): Double = sqr(b) - 4 * a * c
+fun discriminant(a: Double, b: Double, c: Double): Double = sqr(b) - 4 * a * c
 
-private fun rootsNumber(a: Double, b: Double, c: Double): Int {
+fun rootsNumber(a: Double, b: Double, c: Double): Int {
     val d = discriminant(a, b, c)
     return when {
         d > 0 -> 2
@@ -13,26 +13,31 @@ private fun rootsNumber(a: Double, b: Double, c: Double): Int {
     }
 }
 
-private fun quadraticRoot(a: Double, b: Double, c: Double) {
+fun quadraticRoot(a: Double, b: Double, c: Double) {
     val d = discriminant(a, b, c)
     when (rootsNumber(a, b, c)) {
         2 -> {
-            val x1 = (-b + sqrt(d)) / (2 * a)
-            val x2 = (-b - sqrt(d)) / (2 * a)
-            println("Корни: x1 = $x1, x2 = $x2")
+            val firstRoot = (-b + sqrt(d)) / (2 * a)
+            val secondRoot = (-b - sqrt(d)) / (2 * a)
+            println("Two roots: x1 = $firstRoot, x2 = $secondRoot")
         }
         1 -> {
-            val x = -b / (2 * a)
-            println("Корень: x = $x")
+            val onlyRoot = -b / (2 * a)
+            println("One root: x = $onlyRoot")
         }
-        else -> println("Корней нет")
+        else -> println("No roots (D < 0)")
     }
 }
 
 fun task7() {
-    println("Введите коэффициенты a, b, c:")
-    val a = readln().toDouble()
-    val b = readln().toDouble()
-    val c = readln().toDouble()
+    println("Enter coefficients a, b, c (each on a new line):")
+    val a = readln().toDoubleOrNull() ?: return
+    val b = readln().toDoubleOrNull() ?: return
+    val c = readln().toDoubleOrNull() ?: return
+
+    if (a == 0.0) {
+        println("This is not a quadratic equation (a = 0)")
+        return
+    }
     quadraticRoot(a, b, c)
 }

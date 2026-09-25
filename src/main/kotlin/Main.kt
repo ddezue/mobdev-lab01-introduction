@@ -1,18 +1,18 @@
 fun main() {
     while (true) {
-        println("\n===== МЕНЮ =====")
-        println("1  - Сумма первой и последней цифры")
-        println("2  - Ввод чисел до 0")
-        println("3  - Угадай число")
-        println("4  - N простых чисел")
-        println("5  - Элементы больше соседних")
-        println("6  - Произведение, min, max массива")
-        println("7  - Квадратное уравнение")
-        println("8  - Класс с массивом")
-        println("9  - Класс Vector")
-        println("10 - Наследование Vehicle")
-        println("0  - Выход")
-        print("Выберите задание: ")
+        println("=== Menu ===")
+        println("1  - Sum of first and last digit")
+        println("2  - Input numbers until 0")
+        println("3  - Guess the number")
+        println("4  - First n prime numbers")
+        println("5  - Array elements greater than neighbors")
+        println("6  - Product, min, max of array")
+        println("7  - Quadratic equation")
+        println("8  - Class with an array")
+        println("9  - Vector class (3D)")
+        println("10 - Vehicle hierarchy")
+        println("0  - Exit")
+        print("Your choice: ")
 
         when (readln().toIntOrNull()) {
             1 -> task1()
@@ -26,10 +26,11 @@ fun main() {
             9 -> task9()
             10 -> task10()
             0 -> {
-                println("Выход из программы.")
+                println("Exiting the program.")
                 return
             }
-            else -> println("Неверный выбор. Попробуйте снова.")
+            else -> println("Invalid input. Try again.\n")
         }
+        println()
     }
 }

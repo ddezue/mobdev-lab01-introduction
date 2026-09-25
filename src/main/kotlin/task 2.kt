@@ -1,19 +1,20 @@
 fun task2() {
     var count = 0
-    var sum = 0
-    var number: Int
+    var sum = 0.0
+    println("Enter numbers (0 to finish):")
 
-    println("Вводите числа (0 — завершение):")
-    do {
-        number = readln().toInt()
-        if (number != 0) {
-            count++
-            sum += number
-        }
-    } while (number != 0)
+    while (true) {
+        val number = readln().toDoubleOrNull() ?: continue
+        if (number == 0.0) break
+        ++count
+        sum += number
+    }
 
-    val average = if (count > 0) sum.toDouble() / count else 0.0
-    println("Количество чисел: $count")
-    println("Сумма: $sum")
-    println("Среднее арифметическое: $average")
+    println("Count: $count")
+    println("Sum: $sum")
+    if (count > 0) {
+        println("Average: ${sum / count}")
+    } else {
+        println("No numbers were entered")
+    }
 }

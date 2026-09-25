@@ -1,14 +1,14 @@
 fun task3() {
-    val a = (0..10).random()
-    println("Программа загадала число от 0 до 10. Попробуйте угадать:")
+    val hiddenNumber = (0..10).random()
+    println("The program has picked a number from 0 to 10. Try to guess:")
 
     while (true) {
-        val b = readln().toInt()
+        val guess = readln().toIntOrNull() ?: continue
         when {
-            b > a -> println("Много")
-            b < a -> println("Мало")
+            guess > hiddenNumber -> println("Too much")
+            guess < hiddenNumber -> println("Too little")
             else -> {
-                println("Угадал")
+                println("Guessed")
                 break
             }
         }

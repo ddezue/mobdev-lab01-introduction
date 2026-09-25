@@ -1,11 +1,14 @@
 fun task5() {
-    val array = intArrayOf(1, 5, 2, 8, 3, 9, 4, 7, 6)
+    val numbers = intArrayOf(1, 5, 3, 7, 2, 9, 4, 6, 8)
+    println("Array: ${numbers.joinToString()}")
 
-    println("Массив: ${array.joinToString()}")
-    println("Элементы, которые больше соседних:")
-    for (i in 1 until array.size - 1) {
-        if (array[i] > array[i - 1] && array[i] > array[i + 1]) {
-            println(array[i])
+    println("Elements greater than their neighbors:")
+    var found = false
+    for (index in 1 until numbers.size - 1) {
+        if (numbers[index] > numbers[index - 1] && numbers[index] > numbers[index + 1]) {
+            println(numbers[index])
+            found = true
         }
     }
+    if (!found) println("No such elements")
 }
